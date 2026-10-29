@@ -1,0 +1,11 @@
+'use strict';
+(function(root){
+const norm=t=>{const [id,end]=t.split(':');return id+':'+(end.startsWith('p')?'p':end)};
+// Split wire flow by KCL on a spanning tree. Extra ideal-wire loops carry zero
+// visual flow because their individual ideal currents are underdetermined.
+// result.currents may contain a consistent representative of ideal sharing;
+// meters separately expose null when that measured branch is not unique.
+function wireFlows(parts,wires,result){const graph={},injection={},flows=wires.map(()=>0);if(result.error)return flows;for(const p of parts){const i=result.currents[p.id]||0;injection[p.id+':p']=-i;injection[p.id+':n']=i}wires.forEach((w,index)=>{const a=norm(w.a),b=norm(w.b);(graph[a]??=[]).push({to:b,index,sign:1});(graph[b]??=[]).push({to:a,index,sign:-1})});const seen=new Set();for(const start of Object.keys(graph)){if(seen.has(start))continue;seen.add(start);const order=[{node:start,parent:null}];for(let n=0;n<order.length;n++){const u=order[n];for(const edge of graph[u.node])if(!seen.has(edge.to)){seen.add(edge.to);order.push({node:edge.to,parent:u.node,edge})}}const sums={};for(let n=order.length-1;n>=0;n--){const u=order[n],sum=(injection[u.node]||0)+(sums[u.node]||0);if(u.parent){flows[u.edge.index]=-sum*u.edge.sign;sums[u.parent]=(sums[u.parent]||0)+sum}}}return flows}
+function shortPath(parts,wires){const graph={};const edge=(a,b,key)=>{a=norm(a);b=norm(b);(graph[a]??=[]).push({to:b,key});(graph[b]??=[]).push({to:a,key})};wires.forEach((w,i)=>edge(w.a,w.b,'w'+i));parts.filter(p=>p.type==='ammeter'||p.type==='switch'&&p.closed).forEach(p=>edge(p.id+':p',p.id+':n',p.id));for(const battery of parts.filter(p=>p.type==='battery')){const start=battery.id+':p',target=battery.id+':n',queue=[start],visited=new Map([[start,null]]);for(let n=0;n<queue.length;n++){for(const e of graph[queue[n]]||[])if(!visited.has(e.to)){visited.set(e.to,{from:queue[n],key:e.key});queue.push(e.to)}}if(visited.has(target)){const keys=[];let at=target;while(at!==start){const e=visited.get(at);keys.push(e.key);at=e.from}return keys}}return []}
+const api={wireFlows,shortPath};if(typeof module!=='undefined')module.exports=api;else Object.assign(root,api);
+})(typeof window==='undefined'?globalThis:window);

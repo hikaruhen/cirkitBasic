@@ -1,0 +1,29 @@
+{
+  "version": "local-20261029-r5-circuits",
+  "files": [
+    {
+      "path": "index.html",
+      "sha256": "62304932e09d3fe22a5b3881b92b5e3a6915a497a7d4e6c2bcabe3bc2e8905ca"
+    },
+    {
+      "path": "style.css",
+      "sha256": "9276220b30b233ebbe9660344ec6847697fe7074d3cc236851922aa8695604f1"
+    },
+    {
+      "path": "sim.js",
+      "sha256": "b553af6049043f9095faee6baf14a0eae13886b1424b57d74025035c6f1d8ec5"
+    },
+    {
+      "path": "solver.js",
+      "sha256": "d1bf477938ee95d2304723d6e4bc438c7f54039a865bb4269b98a5d2f5fea5d0"
+    },
+    {
+      "path": "flow.js",
+      "sha256": "404ae86b7d9f2eec0adcaed11d0762bd067048eeb17c9ffe19178c0b9033b89c"
+    },
+    {
+      "path": "phet-original.html",
+      "sha256": "370b10fb6dcb06cff4cc2c453f635130912445bb5a291f2646394d7df2c110c7"
+    }
+  ]
+}
