@@ -2,7 +2,7 @@
 
 入口：index.html。版本local-20261029-r7-safety-draft，2026-10-29。
 
-r7已通過獨立桌面與手機觸控驗收，正依既有授權發布。history-r6/保留完整可執行r6；DEPLOYMENT-RECEIPT.json仍為上一正式版紀錄。
+r7已通過獨立桌面與手機觸控驗收，已依既有授權提交至cirkitBasic，部署結果以最新receipt為準。history-r6/保留完整可執行r6；DEPLOYMENT-RECEIPT.json仍為上一正式版紀錄。
 
 r6已發布至https://hikaruhen.github.io/cirkitBasic/，提交3a2978f8226c61f0c900a4f6bced4ad84efc92de。已確認Pages建置成功、六個線上執行檔雜湊及桌面／手機主要操作。history-r5/保留修改前可執行r5。
 

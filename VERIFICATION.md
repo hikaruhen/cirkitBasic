@@ -1,6 +1,6 @@
 # r7 本機驗收稿：2026-10-29
 
-狀態：作者自驗及獨立桌面／手機觸控驗收通過，準備發布r7。以下測試以已安裝Edge無頭瀏覽器執行，不代表真機手機驗收。
+狀態：作者自驗及獨立桌面／手機觸控驗收通過，已提交r7至cirkitBasic；部署完成紀錄另見本機receipt。以下測試以已安裝Edge無頭瀏覽器執行，不代表真機手機驗收。
 
 - tests/safety-ui-r7.cjs：正常燈泡安全；A跨源只燒A、旁支燈續流；一次動畫結束後不重播、不重複加history；旋轉／換圖持續報廢；更換未修錯線會再燒；暫停復原不自動燒；純線短路只斷一條路徑線且健康旁支恢復；手機單階圖。
 - tests/safety-matrix-r7.cjs：正常15V表跨6V不燒、3V表跨6V報廢；5Ω電阻7.2W超過5W報廢、12V燈泡超1.5W報廢；待接線／拖曳不累計；報廢後改線不復活、修好再更換不重燒；報廢表在390×844、844×390、1440×900下4角度×2模式，持續報廢／可更換／無偽讀值與指針。
@@ -8,7 +8,7 @@
 - tests/cancel-undo-r6.cjs：390×844／844×390觸控改線後無效取消、立即復原通過。
 - 15項circuit、176項reasonableness與flow KCL／分流／短路路徑既有測試通過；solver.js與flow.js未改。
 - 安培計低量程／反接等純故障判定與5..100色碼已由獨立驗收者另做116項檢查並回報通過；本文件不將該回報當作作者重跑結果。
-- 已實看r7-fault-animation.png與r7-resistor-damaged-mobile.png；另保留r7-damaged-{390,844,1440}.png、r7-battery-general-mobile.png與r7-battery-mobile.png。手機全覽供拓撲理解，細刻度仍建議放大。
+- 已實看r7-fault-animation.png與r7-resistor-damaged-mobile.png；本機另保留r7-damaged-{390,844,1440}.png、r7-battery-general-mobile.png與r7-battery-mobile.png。手機全覽供拓撲理解，細刻度仍建議放大。
 
 模型界線詳README及介面「模型與出處」。誇張火焰與0.65／0.9秒門檻是教學示意，非實物安全／熱模擬。故障保存在目前場景記憶體與復原歷史，重載網頁重設，不含永久儲存。
 
