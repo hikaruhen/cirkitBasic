@@ -1,17 +1,17 @@
 {
-  "version": "local-20261029-r5-circuits",
+  "version": "local-20261029-r6-operation",
   "files": [
     {
       "path": "index.html",
-      "sha256": "62304932e09d3fe22a5b3881b92b5e3a6915a497a7d4e6c2bcabe3bc2e8905ca"
+      "sha256": "f8caff12b86d8f1f3f4a6cc85d778ce65d8164c43f7ebf970caef326718a0fb6"
     },
     {
       "path": "style.css",
-      "sha256": "9276220b30b233ebbe9660344ec6847697fe7074d3cc236851922aa8695604f1"
+      "sha256": "bbe8c4f16d3c9ea406c14036975e97d1312131a00d1d8f1b52ba9e36593e116e"
     },
     {
       "path": "sim.js",
-      "sha256": "b553af6049043f9095faee6baf14a0eae13886b1424b57d74025035c6f1d8ec5"
+      "sha256": "c9814cffb654d34bde08a37a55d5f16813a6fe832bcb31bb3c7f64c668b083b3"
     },
     {
       "path": "solver.js",
