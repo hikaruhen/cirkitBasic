@@ -1,9 +1,9 @@
 {
-  "version": "local-20261029-r10-meter-space",
+  "version": "local-20261029-r11-meter-channel",
   "files": [
     {
       "path": "index.html",
-      "sha256": "1639735e34f0af6495b91002c32a34c8bedaf4fd23e36e18be83b39b92a91637"
+      "sha256": "c669958c6caa94876d3a30267f74ce0e5404fa9db6e964e81fc7cf08109d1ae3"
     },
     {
       "path": "style.css",
@@ -11,7 +11,7 @@
     },
     {
       "path": "sim.js",
-      "sha256": "fc7b67f1b136a23ac08a5fdb6f5cd59830d50d4c38b85f8e76e6c25394352043"
+      "sha256": "83b9597cda4416fded4f9db04d1754ee8cdef0a607be1d59c6407eb6646b3e1d"
     },
     {
       "path": "solver.js",
