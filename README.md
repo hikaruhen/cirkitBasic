@@ -1,8 +1,17 @@
-# 電路遊樂場 — r11 旋轉儀表與端子通道版
+# 電路遊樂場 — r12 連續路徑與置中邊界版
 
-入口：index.html。版本local-20261029-r11-meter-channel，2026-10-29。
+入口：index.html。版本local-20261029-r12-center-flow，2026-10-29。
 
-r11作者必要自驗與獨立桌面／平板／手機觸控操作驗收全部通過，依既有授權更新cirkitBasic。history-r10/保留完整可執行r10、文件與部署receipt，原版PhET不改。
+r12作者必要自驗與獨立完整操作／像素探針驗收已通過，依既有授權更新cirkitBasic。history-r11/保留修改前完整可執行r11、說明與部署receipt，原版PhET不改。
+
+## r12 新增
+
+- 移除盤面大遮罩。一般安培計的完整可見通道位於端子列下方；符號圖繞圓A的邊緣而不穿過文字。導線粒子在端帽外環銜接到同一個元件接點，電子／帶桿箭頭都不蓋端帽數字。外環是同一電氣接點的可見導引，不增加node、導線或偽支流；實線仍接到原本端子中心。
+- 只連活動紅端與黑端，未用量程不分流，V理想無限阻不產生穿表粒子。電池大電壓讀值移到元件外，維持29字級、正立與可見；內部流路及隨體旋轉的極性印字與讀值／端帽留開；燈泡仍沿殼／底引線與燈絲通過，電流方向不改。
+- 三個preset整組共同平移到2600×900世界中央，再用實際可見元件／導線／必要標籤包圍盒置中於左側畫布；不是只框左上角的世界位置。parallel的junction使用world.w−60，其他元件用world.w−220，導線路徑也一同平移，所有相對向量保留。
+- 字體完成及首次尺寸調整後完成置中；切場景重建並置中。收合／全螢幕／resize只調相機，世界座標與拓撲不動。手動鏡頭保留原世界中心，已選儀表必要時做最小可見性補償。
+- 工作區真邊界為0..2600、0..900，顯示淡虛線、角標與「工作區邊界」，區外灰色區分；標記不接收觸控。拖到真邊界時高亮對應邊、顯示包含外框／接柱／把手的實際放置包圍盒及附近提示，可undo，離開或短暫停留後清除。
+- 大工作區、自然旋轉盤面、儀表把手、靠邊平移、收合／全螢幕、每類10與持續故障／更換保留。
 
 ## r11 新增
 
@@ -91,18 +100,14 @@ MNA秩分析允許一致的冗餘零阻限制；安培計支流不唯一時局�
 
 ```
 node --check sim.js
-node --check solver.js
-node --check flow.js
-node --check safety.js
-node tests/meter-flow-r11.cjs
-node tests/meter-controls-r11.cjs
-node tests/meter-drag-r10.cjs
-node tests/meter-rotation-r10.cjs
-node tests/workspace-r10.cjs
+node tests/battery-label-r12.cjs
+node tests/continuity-r12.cjs
+node tests/centering-r12.cjs
+node tests/boundary-r12.cjs
+node tests/meter-controls-r12.cjs
+node tests/cancel-undo-r12.cjs
 node tests/limits-r9.cjs
 node tests/fullscreen-r9.cjs
-node tests/safety-ui-r7.cjs
-node tests/cancel-undo-r6.cjs
 node tests/reasonableness-r5.test.cjs
 node tests/circuit.test.cjs
 node tests/flow.test.cjs

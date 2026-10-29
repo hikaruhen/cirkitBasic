@@ -1,17 +1,17 @@
 {
-  "version": "local-20261029-r11-meter-channel",
+  "version": "local-20261029-r12-center-flow",
   "files": [
     {
       "path": "index.html",
-      "sha256": "c669958c6caa94876d3a30267f74ce0e5404fa9db6e964e81fc7cf08109d1ae3"
+      "sha256": "33dfbafc21d00f8f122cfe4e932ed413a3aa3608c7af055fc469a4b53130e843"
     },
     {
       "path": "style.css",
-      "sha256": "9d473fd3291e449042208f38ef5ecf10643a07dc430739f196b633170ad78f76"
+      "sha256": "693b121c22c927cd0acbeebda9f48bc07fc1d9518bf6e36c0edae754ae0dcf9f"
     },
     {
       "path": "sim.js",
-      "sha256": "83b9597cda4416fded4f9db04d1754ee8cdef0a607be1d59c6407eb6646b3e1d"
+      "sha256": "ba9dcad5aaa59a8059085ea3e65807b7b4ccfc633466f381f7e769ed059c7852"
     },
     {
       "path": "solver.js",
