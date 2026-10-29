@@ -45,7 +45,7 @@ function solveCircuit(parts,inputWires){
  for(const p of parts){const same=groups[find(p.id+':p')]===groups[find(p.id+':n')],v=same?at(x,p.id+':p')-at(x,p.id+':n'):null,i=ideal.indexOf(p),ambiguous=i>=0&&uncertain.has(unknown.length+i);voltages[p.id]=v;currents[p.id]=i>=0?x[unknown.length+i]:p.type==='resistor'?v/p.value:p.type==='lamp'?lampCurrent(v):0;if(ambiguous)indeterminateCurrents.push(p.id);
  if(p.type==='ammeter'||p.type==='voltmeter')meters[p.id]={value:p.type==='ammeter'?(ambiguous?null:currents[p.id]):v,floating:!same,indeterminate:p.type==='ammeter'&&ambiguous,range:ranges[p.id],port:used[p.id]};
  if(['lamp','resistor'].includes(p.type)&&Math.abs(v??1)<1e-8){const path=route(p.id+':p',p.id+':n');if(path&&path.keys.length&&!path.keys.some(key=>parts.some(q=>q.id===key&&q.type==='battery')))diagnostics.push({code:'bypassed',parts:[p.id],paths:path.keys,label:(p.label|| (p.type==='lamp'?'燈泡':'電阻'))+'被旁路'})}}
- if(indeterminateCurrents.length)diagnostics.push({code:'ideal-sharing',parts:indeterminateCurrents,paths:[],label:'零阻支流分配為示意；電流表不唯一時標「未定」'});
+ if(indeterminateCurrents.length)diagnostics.push({code:'ideal-sharing',parts:indeterminateCurrents,paths:[],label:'零阻支流分配為示意；安培計不唯一時標「未定」'});
  if(!parts.some(p=>p.type==='battery'))diagnostics.unshift({code:'no-source',parts:[],paths:[],label:'無電源：不會持續流動'});
  for(const p of parts.filter(p=>p.type==='voltmeter'))if(Math.abs(voltages[p.id]||0)>1e-8&&parts.some(q=>['resistor','lamp'].includes(q.type))&&parts.filter(q=>q.type==='battery').every(q=>Math.abs(currents[q.id])<1e-9)&&!parts.some(q=>q.type==='switch'&&!q.closed))warnings.push('伏特計可能誤串聯：支路電流為零，但兩端仍有電壓。');
  if(parts.some(p=>p.type==='switch'&&!p.closed))warnings.push('有開關斷開，該支路可能不導通。');

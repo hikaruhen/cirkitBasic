@@ -1,9 +1,9 @@
 {
-  "version": "local-20261029-r7-safety",
+  "version": "local-20261029-r8-lamp",
   "files": [
     {
       "path": "index.html",
-      "sha256": "cf8e49ddafa6894eae1d5675c0cd2fc0fb612584cb170aad10b236a8ba53f37e"
+      "sha256": "b6133b67f8a60312cb0266942567dc8868b58ab080c7610955224839a39656da"
     },
     {
       "path": "style.css",
@@ -11,11 +11,11 @@
     },
     {
       "path": "sim.js",
-      "sha256": "931ede2b7186983aa13ba3a6fcb395fe8112ad5b07109a48faab7aff55a2280b"
+      "sha256": "2eb16db9443c59f476e0a9691a81393d6453b64cef76c56ed49bc15db7af6b03"
     },
     {
       "path": "solver.js",
-      "sha256": "d1bf477938ee95d2304723d6e4bc438c7f54039a865bb4269b98a5d2f5fea5d0"
+      "sha256": "8030cddda69414e90cf27032ff92e00c10978916b3d14dc169db8553f9034350"
     },
     {
       "path": "flow.js",
@@ -23,7 +23,7 @@
     },
     {
       "path": "safety.js",
-      "sha256": "903e5cb7857a3d2bcb51a2042d6ee069edd4396be653365fa4a98240da5b1765"
+      "sha256": "75a8dc20a0cb76d7867e57d91b29879bb99bbb17ecc1f07863a7207590eece36"
     },
     {
       "path": "phet-original.html",
