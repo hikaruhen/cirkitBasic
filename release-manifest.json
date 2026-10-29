@@ -1,17 +1,17 @@
 {
-  "version": "local-20261029-r6-operation",
+  "version": "local-20261029-r7-safety",
   "files": [
     {
       "path": "index.html",
-      "sha256": "318664d01e71146d433d29a5f3a46e7efb00e96033857ae4f6a2548d6daf5137"
+      "sha256": "cf8e49ddafa6894eae1d5675c0cd2fc0fb612584cb170aad10b236a8ba53f37e"
     },
     {
       "path": "style.css",
-      "sha256": "bbe8c4f16d3c9ea406c14036975e97d1312131a00d1d8f1b52ba9e36593e116e"
+      "sha256": "8f479e28ff8269919a53cfbefb5d4ba05ce1afc364c0c9cac7b943db31d1a676"
     },
     {
       "path": "sim.js",
-      "sha256": "c9814cffb654d34bde08a37a55d5f16813a6fe832bcb31bb3c7f64c668b083b3"
+      "sha256": "931ede2b7186983aa13ba3a6fcb395fe8112ad5b07109a48faab7aff55a2280b"
     },
     {
       "path": "solver.js",
@@ -20,6 +20,10 @@
     {
       "path": "flow.js",
       "sha256": "404ae86b7d9f2eec0adcaed11d0762bd067048eeb17c9ffe19178c0b9033b89c"
+    },
+    {
+      "path": "safety.js",
+      "sha256": "903e5cb7857a3d2bcb51a2042d6ee069edd4396be653365fa4a98240da5b1765"
     },
     {
       "path": "phet-original.html",
