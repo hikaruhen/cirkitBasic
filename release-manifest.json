@@ -1,17 +1,17 @@
 {
-  "version": "local-20261029-r8-lamp",
+  "version": "local-20261029-r9-workspace",
   "files": [
     {
       "path": "index.html",
-      "sha256": "b6133b67f8a60312cb0266942567dc8868b58ab080c7610955224839a39656da"
+      "sha256": "af55ee799c2ac9153cbac3515d40a5fcdc026a28ec27ca837c6f268dbd461cd0"
     },
     {
       "path": "style.css",
-      "sha256": "8f479e28ff8269919a53cfbefb5d4ba05ce1afc364c0c9cac7b943db31d1a676"
+      "sha256": "8adb3f0f53684a289234877d7c65073ec5bc80cd66199cae860271acae2519c0"
     },
     {
       "path": "sim.js",
-      "sha256": "2eb16db9443c59f476e0a9691a81393d6453b64cef76c56ed49bc15db7af6b03"
+      "sha256": "e7f84f995943989bbe7edac6e6ce5ec0c94b765cb52d988c9dc89a46ad427f2c"
     },
     {
       "path": "solver.js",

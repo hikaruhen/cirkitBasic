@@ -1,3 +1,20 @@
+# r9 橫向工作區與數量限制驗證：2026-10-29
+
+狀態：作者自驗及獨立桌面／手機觸控操作驗收通過，準備發布r9。此前版本紀錄保留於history-r8。
+
+- tests/layout-r9.cjs：1440×900、1024×768、768×1024、844×390、390×844布局，world面積1.3倍、獨立欄捲動、提示關閉、連續兩次觸控跨欄拖放、待接線保留、全覽／工作區及旋轉視窗保留模型通過。
+- tests/limits-r9.cjs：六類各9→10並共存60個；第11個座標點按、拖動、Enter／Space均擋下，parts／wires／serial／selected／pending／view／scene／history完整不變。刪1補1與兩次undo、報廢A更換仍為10、預設場景重設限制通過。
+- tests/fullscreen-r9.cjs：使用實際Fullscreen API反覆進出、右欄捲至底仍可退出、模型與pending保留、無API／Promise拒絕時回饋、外部退出同步通過。自動化環境Esc若由宿主攔截，另以原生exitFullscreen驗證fullscreenchange；不將此當作所有實機系統Esc測試。
+- tests/lamp-r8.cjs：新相機下桌面／手機直橫向，四角度×兩模式，真實殼底接線、反接仍亮、至少44px與動畫端點維持對齊通過。自驗曾發現直向提示覆蓋頂端端子，已改提示為獨立列後重驗。
+- tests/safety-ui-r7.cjs及tests/cancel-undo-r6.cjs：故障持續、旁支續流、更換再燒、暫停復原、純線短路及手機取消改接後立即復原通過；solver／flow／safety邏輯未改。
+- 獨立驗收回報：同樣四視窗布局、真實fullscreen、六類滿額與無副作用、各10共60、連續新增8個電阻均進入視野且zoom保留；另殼底燈泡四角度／兩模式、實際反接串並聯、接線取消斷線復原及故障回歸通過，無pageerror。
+- r9-layout-{1440,1024,844,390}.png等為本機渲染證據。作者已實看桌面、手機直橫向；瀏覽器觸控模擬不冒稱真機驗收。
+
+Fullscreen API與橫向鎖定依瀏覽器支援，鎖定是可選嘗試；擁有60個元件的密集場景仍需平移／放大／全覽，非承諾所有元件可同時以細節閱讀尺寸排入畫面。
+
+---
+以下保留r8歷史紀錄，並非r9部署證明。
+
 # r8 燈泡接法與術語驗證：2026-10-29
 
 狀態：作者自驗及獨立桌面／手機觸控操作驗收已通過，準備更新正式站。
@@ -80,3 +97,7 @@ Pages建置對應提交3a2978f8226c61f0c900a4f6bced4ad84efc92de，狀態built。
 ## r7線上驗證
 
 Pages built：a35c0d006ff7c65f383424641af96cf16029bc8d。release-manifest版本local-20261029-r7-safety，七個線上執行檔SHA256與發布來源一致。正式網站Edge桌面／390×844視窗測試通過單階圖、正常開關、A跨源燒毀與健康旁支續流、一次動畫結束、旋轉換圖保留故障、更換錯接再次燒毀；無pageerror。正式receipt已更新，r6備份保留。
+
+## r8線上驗證
+
+Pages built：1c65759c61120966b33b0abfcacc6d7d5ded5db5。七個線上runtime SHA256與release-manifest（local-20261029-r8-lamp）一致。Edge 1440×900、390×844觸控及844×390觸控實際通過正確術語、殼／底aria與絕緣環、反接兩端完成接線仍亮、旋轉及切符號保留線路，無pageerror。發布checkout乾淨；r7部署receipt與可執行備份保留。
