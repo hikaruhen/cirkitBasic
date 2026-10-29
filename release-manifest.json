@@ -1,17 +1,17 @@
 {
-  "version": "local-20261029-r9-workspace",
+  "version": "local-20261029-r10-meter-space",
   "files": [
     {
       "path": "index.html",
-      "sha256": "af55ee799c2ac9153cbac3515d40a5fcdc026a28ec27ca837c6f268dbd461cd0"
+      "sha256": "1639735e34f0af6495b91002c32a34c8bedaf4fd23e36e18be83b39b92a91637"
     },
     {
       "path": "style.css",
-      "sha256": "8adb3f0f53684a289234877d7c65073ec5bc80cd66199cae860271acae2519c0"
+      "sha256": "9d473fd3291e449042208f38ef5ecf10643a07dc430739f196b633170ad78f76"
     },
     {
       "path": "sim.js",
-      "sha256": "e7f84f995943989bbe7edac6e6ce5ec0c94b765cb52d988c9dc89a46ad427f2c"
+      "sha256": "fc7b67f1b136a23ac08a5fdb6f5cd59830d50d4c38b85f8e76e6c25394352043"
     },
     {
       "path": "solver.js",

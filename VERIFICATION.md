@@ -1,3 +1,19 @@
+# r10 儀表與大工作區驗證：2026-10-29
+
+狀態：作者必要自驗與獨立桌面／平板／手機觸控驗收全部通過，準備發布r10。
+
+- tests/meter-drag-r10.cjs：1440×900、1024×768、844×390真實觸控，兩種儀表×四角度×兩模式；把手至少48px高，不與任何自身接柱熱區重疊，40／18CSS px移動與實際world位移一致，已接線的端點／拓撲／量程／故障狀態保留，undo回原位。
+- tests/meter-rotation-r10.cjs：同三視窗，實際點旋轉後把手完整在畫布內、中心取樣可抓，元件中心不變，接著22／18px拖曳跟手；兩表四角度兩模式通過。修正獨立驗收最初抓到的近景90度把手出界，使用鏡頭補償，不用搬元件補畫面。
+- tests/workspace-r10.cjs：桌面／844×390觸控，六類元件真正由工具架拖到(200,180)、(2100,180)、(200,620)、(2100,620)；位置誤差小於1.5world單位、可見、每次只一筆history、undo移除。超過舊1300／450可配置，靠邊停留自動pan跟手且只一筆歷史；相機操作不搬模型、近看最小260單位視野保留；原場景三元件首次方向鍵與拖曳轉換不跳位。
+- tests/limits-r9.cjs：六類各10共60、滿額各入口無模型／view／pending／history副作用、刪補undo與報廢更換通過。
+- tests/fullscreen-r9.cjs、tests/safety-ui-r7.cjs、tests/cancel-undo-r6.cjs：全螢幕進出／不支援／拒絕、正常旁支與持續故障、更換再燒、觸控改接取消立即undo回歸通過。Fullscreen測試仍區分自動化宿主Esc與原生exitFullscreen事件。
+- 獨立驗收回報三視窗兩表四角度兩模式實拖誤差小於2CSS px，把手三個取樣點均命中正確元件、132×48px以上；遠處四點與局部新增、六表全覽、右欄收合／展開模型不變，左右布局／全螢幕／各類上限回歸通過。
+
+限制：極遠全覽時表面細刻度仍須近看或放大表；真正world邊界會保留把手與接柱熱區所需空間。瀏覽器觸控模擬不代表實體手機驗收。r10-meters-*.png等保留本機視覺證據。
+
+---
+以下保留r9歷史驗證，並非r10部署證明。
+
 # r9 橫向工作區與數量限制驗證：2026-10-29
 
 狀態：作者自驗及獨立桌面／手機觸控操作驗收通過，準備發布r9。此前版本紀錄保留於history-r8。
@@ -101,3 +117,11 @@ Pages built：a35c0d006ff7c65f383424641af96cf16029bc8d。release-manifest版本l
 ## r8線上驗證
 
 Pages built：1c65759c61120966b33b0abfcacc6d7d5ded5db5。七個線上runtime SHA256與release-manifest（local-20261029-r8-lamp）一致。Edge 1440×900、390×844觸控及844×390觸控實際通過正確術語、殼／底aria與絕緣環、反接兩端完成接線仍亮、旋轉及切符號保留線路，無pageerror。發布checkout乾淨；r7部署receipt與可執行備份保留。
+
+## r9線上驗證
+
+Pages built：d645a8449870f7b17d7bf1c5fb0d7e3a78df3956。七個線上runtime SHA256與release-manifest（local-20261029-r9-workspace）一致。Edge 1440×900、844×390觸控、390×844觸控通過左右／直向替代布局、world面積585000、正常殼底燈泡通電、9→10及第11個實際觸控阻擋且完整模型／history／view／pending不變；桌面實際全螢幕進出保留電路，無pageerror。發布checkout乾淨；history-r8及r8部署receipt備份保留。
+
+## r10獨立收尾驗收
+
+驗收者確認觸控connected-drag兩表一般／符號實拖讀值、拓撲與undo保留，停邊1秒自動平移只增加一筆history；既有connection-r6及r8-fault-check桌面／觸控均通過、無pageerror。已視覺檢視六儀表分散全覽與手機橫向抓取，允許依既有授權發布。

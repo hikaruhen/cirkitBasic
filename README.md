@@ -1,8 +1,20 @@
-# 電路遊樂場 — r9 橫向工作區與全螢幕版
+# 電路遊樂場 — r10 大工作區與儀表拖曳版
 
-入口：index.html。版本local-20261029-r9-workspace，2026-10-29。
+入口：index.html。版本local-20261029-r10-meter-space，2026-10-29。
 
-r9已完成作者自驗與獨立桌面／手機觸控操作驗收，依既有授權更新cirkitBasic。history-r8/保留修改前完整可執行r8、文件與部署receipt，原始PhET保持不變。
+r10作者自驗與獨立桌面／平板／手機觸控操作驗收均已通過，依既有授權更新cirkitBasic。history-r9/保留完整可執行r9與部署receipt，原版PhET保留。
+
+## r10 新增
+
+- 工作世界由r9的1300×450擴為2600×900，寬、高各2倍，面積4倍；解除原本y=450狹帶以及normalized的舊比例限位。元件仍為原實際尺寸，沒有縮字或縮接柱來換空間。
+- 非user預設場景的x／y仍按原1000×450座標基準，初始近景與r9等同清楚；首次拖曳／鍵盤移動轉成新world時保留實際位置。全覽框住現有電路，整個工作區另看完整2600×900；平移／縮放不改元件實際座標。
+- world加倍時近看上限同步加倍：zoom scale最大10，仍可近看到260單位的視野寬，等同r9原先1300／5；不因world變大而降低儀表可放大程度。
+- 儀表難抓的原因包含舊標題列只有30world單位高、旋轉後貼近44px接柱熱區。r10新增獨立正向「拖曳此處移動」把手，至少132×48CSS px，位在全部接柱熱區之外並繪於最上層。一般／符號模式、四角度均用同一移動入口；原表面、讀值、量程、放大表及接柱熱區保留。
+- 近景旋轉、拖放完成、復原、視窗／欄位重排後，以最小鏡頭平移保持選中儀表把手可見；必要時才縮到能裝下整個元件。不為修畫面而搬動元件，真正world邊界仍會保護外框與可點區。
+- 元件拖到畫布邊緣並停留可自動平移，同一手勢只存一筆可復原歷史。工具架點新增先搜尋附近空位，擁擠時使用相鄰空間並平移帶入；拖放可實際落在新world遠處，不會拉回舊1300／450界線。
+- 右欄可用頂列「收合工具／展開工具」收合；全螢幕與展開按鈕始終在頂列，沒有把退出全螢幕藏掉。
+
+每類10個、安培計／伏特計、殼底燈泡、色碼、持續燒毀／更換與左右操作沿用r9。瀏覽器觸控驗證不冒稱真機驗收。
 
 ## r9 新增
 
@@ -73,22 +85,19 @@ node --check sim.js
 node --check solver.js
 node --check flow.js
 node --check safety.js
-node tests/layout-r9.cjs
+node tests/meter-drag-r10.cjs
+node tests/meter-rotation-r10.cjs
+node tests/workspace-r10.cjs
 node tests/limits-r9.cjs
 node tests/fullscreen-r9.cjs
-node tests/lamp-r8.cjs
 node tests/safety-ui-r7.cjs
-node tests/safety-matrix-r7.cjs
-node tests/smoke-r6.cjs
-node tests/rotation-r6.cjs
-node tests/interaction-r6.cjs
 node tests/cancel-undo-r6.cjs
 node tests/reasonableness-r5.test.cjs
 node tests/circuit.test.cjs
 node tests/flow.test.cjs
 ```
 
-瀏覽器腳本使用本機bundled Playwright及Edge，換電腦須調整依賴路徑。舊r4/r5瀏覽器腳本含已移除的power/cut控制，保留作歷史，不代表新版操作要求。LOCAL-MANIFEST.json記錄本輪來源雜湊。
+瀏覽器腳本使用本機bundled Playwright及Edge，換電腦須調整依賴路徑。舊版專屬布局與鏡頭斷言保留作歷史，現行使用上述r10檢查；更早r4/r5還含已移除的power/cut控制。LOCAL-MANIFEST.json記錄本輪來源雜湊。
 
 
 ## 本專案後續發布
