@@ -234,3 +234,6 @@ Pages built：8805427822d29e7fa061b6ec900bd2aae420185b。七個正式runtime SHA
 
 
 正式站r15：Pages built提交5f25003b3f74f97eb0d1e59fdb0be7f03f951a87；七個runtime SHA256與本機完全一致，原版PhET保持。1440×900與844×390正式頁已核對15 kΩ／100 μA伏特計實際相位位移、KCL、三排、反向模式、暫停／慢速／恢復及旋轉，無pageerror。
+
+
+r16補驗：任何dialog開啟時阻擋背景快捷鍵；待接線時Escape只關面板，第二次Escape才取消接線。返回按鈕保留pending；R／Ctrl+Z／Delete／Backspace不改背景。已在三尺寸、選元件及選導線兩種狀態通過。

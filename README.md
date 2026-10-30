@@ -161,3 +161,6 @@ node tests/flow.test.cjs
 ## 本專案後續發布
 
 依使用者要求，每次修改並驗收完成後，接續更新既有cirkitBasic線上版，不必重複詢問相同一般發布授權；僅適用本教具。完整範圍與檢查步驟見DEPLOYMENT.md，最近一次實測結果見DEPLOYMENT-RECEIPT.json。入口CSS／JS採內容指紋參數，避免舊資源快取混用。
+
+
+r16補驗：任何dialog開啟時阻擋背景快捷鍵；待接線時Escape只關面板，第二次Escape才取消接線。返回按鈕保留pending；R／Ctrl+Z／Delete／Backspace不改背景。已在三尺寸、選元件及選導線兩種狀態通過。
