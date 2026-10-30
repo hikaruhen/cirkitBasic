@@ -237,3 +237,5 @@ Pages built：8805427822d29e7fa061b6ec900bd2aae420185b。七個正式runtime SHA
 
 
 r16補驗：任何dialog開啟時阻擋背景快捷鍵；待接線時Escape只關面板，第二次Escape才取消接線。返回按鈕保留pending；R／Ctrl+Z／Delete／Backspace不改背景。已在三尺寸、選元件及選導線兩種狀態通過。
+
+每次重新打開原理與操作時scrollTop=0，三尺寸捲到底後關閉再開均回到頂端，背景狀態保留。
