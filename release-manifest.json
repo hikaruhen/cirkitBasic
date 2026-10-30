@@ -1,17 +1,17 @@
 {
-  "version": "local-20261030-r13-flow-motion",
+  "version": "local-20261030-r14-three-scales",
   "files": [
     {
       "path": "index.html",
-      "sha256": "16dd035306e56d8b6d1dc7b7ef78e77612d959d5e78c0acca192242ebd53b978"
+      "sha256": "72b19b21592a170ac1472b41509e6d00671c916839406ba79d10f7bab6c77804"
     },
     {
       "path": "style.css",
-      "sha256": "fa38a87909b9d08f6aba99dea1bdb1bfc3b03918aeb7ce5c6294b53f170287a4"
+      "sha256": "a28fa159675899e9fd16f55638b9d72502b3440a6e86279c6d01755c438e3fc5"
     },
     {
       "path": "sim.js",
-      "sha256": "46a631d201782cbdb4bef78c658add48237f117d14322f5e27b62ae79a8410f0"
+      "sha256": "abe11450832d493fef073a33d4033c1f79849646faf88e90de388283203e06fe"
     },
     {
       "path": "solver.js",
