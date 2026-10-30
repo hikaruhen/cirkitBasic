@@ -1,17 +1,17 @@
 {
-  "version": "local-20261030-r15-finite-voltmeter",
+  "version": "local-20261030-r16-compact-help",
   "files": [
     {
       "path": "index.html",
-      "sha256": "e8425e8eb5797f75f595003af3674cf9ce69f5256f276fa7e2c95a07c63292af"
+      "sha256": "a164fcb32617c700dc998beef3a4d60bfcf5c7ee4e635635f17b76e550b3576a"
     },
     {
       "path": "style.css",
-      "sha256": "a28fa159675899e9fd16f55638b9d72502b3440a6e86279c6d01755c438e3fc5"
+      "sha256": "f257d83efcc37caabe986723a1d036a369b8dcaa4022816996b1077249646af0"
     },
     {
       "path": "sim.js",
-      "sha256": "b4bfb4bb4afcc6986fa1bce8beca53a7fa2000b670d3d0e911776b32a233f41e"
+      "sha256": "d6874e2b27c95e58652c64471d9277ce9b844e4a4180a49004e933b8e55a1573"
     },
     {
       "path": "solver.js",
