@@ -1,8 +1,19 @@
-# 電路遊樂場 — r14 三排刻度版
+# 電路遊樂場 — r15 有限高阻伏特計版
 
-入口：index.html。版本local-20261030-r14-three-scales，2026-10-30。
+入口：index.html。版本local-20261030-r15-finite-voltmeter，2026-10-30。
 
-r13作者必要自驗與獨立桌面／手機觸控操作驗收已通過，依使用者既有授權更新cirkitBasic。history-r12/保留修改前完整可執行r12、文件與部署receipt，原版PhET不改。
+r15本機物理與互動自驗及獨立解析／動態驗收已通過，依既有授權發布。history-r14保留修改前完整執行檔、文件與測試；原版PhET保持原檔。
+
+## r15 新增
+
+- 將理想無限阻伏特計改為有限高阻指針式伏特計。教學靈敏度1000 Ω/V、滿刻度1 mA，3／15／30 V量程總輸入電阻為3／15／30 kΩ，按實際接入紅端決定；不是指定照片儀表的實測規格。
+- MNA納入伏特計導納，回傳inputResistance及branchI。電源電流、導線KCL、其他支路讀值及負載效應隨之重算；不是額外假畫動畫。並聯吸小電流；串聯限制電流並分壓。反接讀負值、方向反轉。等電位、單端懸空、無源、開路與報廢後都零流；多紅端仍拒絕讀值。
+- 伏特計粒子沿既有獨立表內通道及端帽環流動，保留三排刻度與自然旋轉。微小支流（≤1.01 mA）標記更稀疏、稍小且較慢，側欄說明「高電阻，只有微小電流」並列輸入電阻。速度採單調示意120√|I|+18|I|/(|I|+0.003) CSS px/s，不可用粒子數或速度比當作電流比；數值仍由求解決定。
+- 直接跨接量程內電源為正常量測，不判短路；仍沿用超量程0.9秒簡化損壞，報廢後開路，修線再更換可恢復。
+- 原理：[OpenStax 21.4 指針式伏特計串聯大電阻](https://openstax.org/books/college-physics-2e/pages/21-4-dc-voltmeters-and-ammeters)；[21.5 標準伏特計吸取小電流與負載效應](https://openstax.org/books/college-physics-2e/pages/21-5-null-measurements)。教材參數與本版教學設定分開。
+- 必要測試：`node tests/voltmeter-physics-r15.cjs`、`node tests/circuit.test.cjs`、`node tests/reasonableness-r5.test.cjs`、`node tests/flow.test.cjs`、`node tests/scales-r14.cjs`、`node tests/voltmeter-flow-r15.cjs`、`node tests/meter-controls-r15.cjs`。r12／r13歷史瀏覽器測試若斷言V無穿表流，請使用保留的對應history版本；r15以有限電阻解析公式與新測試驗證。
+
+以下r14與更早內容均為歷史記錄；其中無限阻／零穿表流與舊速度規則由r15取代。
 
 ## r14 新增
 

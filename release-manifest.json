@@ -1,9 +1,9 @@
 {
-  "version": "local-20261030-r14-three-scales",
+  "version": "local-20261030-r15-finite-voltmeter",
   "files": [
     {
       "path": "index.html",
-      "sha256": "72b19b21592a170ac1472b41509e6d00671c916839406ba79d10f7bab6c77804"
+      "sha256": "e8425e8eb5797f75f595003af3674cf9ce69f5256f276fa7e2c95a07c63292af"
     },
     {
       "path": "style.css",
@@ -11,11 +11,11 @@
     },
     {
       "path": "sim.js",
-      "sha256": "abe11450832d493fef073a33d4033c1f79849646faf88e90de388283203e06fe"
+      "sha256": "b4bfb4bb4afcc6986fa1bce8beca53a7fa2000b670d3d0e911776b32a233f41e"
     },
     {
       "path": "solver.js",
-      "sha256": "8030cddda69414e90cf27032ff92e00c10978916b3d14dc169db8553f9034350"
+      "sha256": "f0e78d041cd323050ecbea41779050b0eb1cfccfb531f0d11e02019fcd3de577"
     },
     {
       "path": "flow.js",
