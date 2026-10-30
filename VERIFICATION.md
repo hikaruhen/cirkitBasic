@@ -1,3 +1,19 @@
+# r13 可見流動與模式操作驗證 — 2026-10-30
+
+狀態：作者必要檢查與獨立桌面／觸控操作及既有回歸通過，準備發布。
+
+- 修改前直接量測手機30mA，phase確實更新但一般3.80CSSpx/s、慢速1.09px/s，點半徑2.13CSSpx；確認原動畫存在，問題在可見尺度／速度，非假加裝飾掩蓋解算。
+- tests/motion-r13.cjs：1440×900、1024×768、844×390，4角度×30／300mA×電子／電流；30mA50／500／5000量程、300mA500／5000量程。追蹤實際DOM標記bbox與phase隨140ms位移，速度大於18CSSpx/s、渲染節點位置確實變、兩模式相位符號相反。V無內部path，電源獨立菱形類型。
+- tests/flow-state-r13.cjs：桌面／手機觸控，模式按鈕與Space切換不改模型／history／view／pending／playing／slow，暫停phase完全不變，slow速度下降、resume恢復；A反接方向翻轉。開路、無源、短路保護窗口零位移，超量程燒毀後沒有內部entry；V保持1.5V但無path。電源菱形與藍點／電流箭頭分開，caption說明非電解質自由電子。放大縮小文字通過。
+- flow.test.cjs：junction MNA、實際wire KCL、0.9／0.6／0.3A分流與斷支流停止通過。
+- r12 continuity／battery-label／centering／boundary及limits-r9回歸通過：連續接點、無mask、端帽避字、大電壓29、四尺寸三preset雙中心、四方向邊界／undo及六類10上限保留。
+- 獨立r13操作回報桌面／844觸控30mA節點真位移、反向、A反接、暫停慢速恢復、Space、四角度兩圖示、零流停止、V讀值無穿表流與44px放大縮小按鈕皆通過。另connection-r6鼠／觸控、r12-center四尺寸三preset、r13-fault鼠／觸控短路燒毀／更換再燒／健康旁支皆通過。
+
+速度為有最低可見值的非線性示意，不以點數當作定量粒子流量；KCL由原solver／flow的實際電流值驗證。數值容差1e-8A內視為零，沒有非零速度。瀏覽器觸控不冒稱真機驗收。
+
+---
+以下為r12歷史紀錄，並非r13部署證明。
+
 # r12 連續流動、雙重置中與真邊界驗證
 
 狀態：作者必要檢查及獨立全部操作／像素探針驗收通過，準備發布r12。
@@ -178,3 +194,7 @@ Pages built：96fd3505ca58eed2cc3c536f6f8d3f94abd49ba8。七個線上runtime SHA
 ## r12獨立最終驗收
 
 旋轉電池修正後，12.0V四角度所有V字（含外部大字）insideSamples=0，minClearCSS依序48.74／161.75／127.26／86.57，電子半徑7.12CSSpx，長箭頭亦有足夠間距，沒有mask。w0及c3逐phase一般／符號×電子／箭頭四組探針均hiddenSamples=0；四尺寸三preset的世界／左viewport雙中心小於1world／1CSSpx，24方向邊界實拖及undo、connection-r6滑鼠／觸控回歸均通過，獨立驗收允許發布。
+
+## r12線上驗證
+
+Pages built：28f11c11104dbd4e6004151c364c866e96d09eda。七個線上runtime SHA256與release-manifest（local-20261029-r12-center-flow）一致。Edge1440×900及844×390觸控通過三preset世界／左viewport雙重置中、無mask且流動層在殼體之後、A12V／100Ω支流0.12A與V12V無穿表粒子、電池29字級外部讀值、電子／箭頭與符號模式、90度表實拖碰左真邊界的高亮／包絡／提示／undo，無pageerror。history-r11及r11部署receipt保留。
