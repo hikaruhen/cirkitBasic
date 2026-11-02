@@ -1,21 +1,21 @@
 {
-  "version": "local-20261030-r16-compact-help",
+  "version": "local-20261102-r17-protection-drag",
   "files": [
     {
       "path": "index.html",
-      "sha256": "13cbdbb535772afe372fd3c72f70d6eb9c82d58acae0c8f10f3858a8ff86fd73"
+      "sha256": "5a4e351dd23450efee0c5cadd28cd0045ae9165c2e7d6ff6f1c6bafcf35b4beb"
     },
     {
       "path": "style.css",
-      "sha256": "f257d83efcc37caabe986723a1d036a369b8dcaa4022816996b1077249646af0"
+      "sha256": "4d137d1f7431e46c5e143635803d3137ad509c8d2fe2c18b5f3b16bf59c091c1"
     },
     {
       "path": "sim.js",
-      "sha256": "3094eb2b5b3ccdf6841db5374e134d3d4ba78195a4f2b714253a4d47fc162e0d"
+      "sha256": "863e1346248ae9e9db13d6a99b3273c9c5c3611a66eca45d0daf21623e0fc654"
     },
     {
       "path": "solver.js",
-      "sha256": "f0e78d041cd323050ecbea41779050b0eb1cfccfb531f0d11e02019fcd3de577"
+      "sha256": "d900d2c95ea1e727ce095d555f9a80e09a3e82435d7bceec50ed2f692fddd5af"
     },
     {
       "path": "flow.js",
@@ -23,7 +23,7 @@
     },
     {
       "path": "safety.js",
-      "sha256": "75a8dc20a0cb76d7867e57d91b29879bb99bbb17ecc1f07863a7207590eece36"
+      "sha256": "29126abc5b9772dcbe14081257733e1893cf85628e6718f4d1e5473782c95270"
     },
     {
       "path": "phet-original.html",
