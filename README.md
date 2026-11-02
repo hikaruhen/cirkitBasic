@@ -1,6 +1,8 @@
-# 電路遊樂場 — r18 mA電流證據版
+# 電路遊樂場 — r19 精簡元件架版
 
-入口：index.html。版本local-20261102-r18-current-evidence，2026-11-02。
+入口：index.html。版本local-20261102-r19-compact-shelf，2026-11-02。
+
+r19只移除元件架上方「拖曳新增」標題與提示段落，保留section aria-label、八個tile及所有操作；原理與操作內既有說明保留。一次實際拖曳新增與DOM確認通過，無模型改動。history-r18保留前版。
 
 r18以r17為基底，本機及獨立判定／事件資訊驗收均通過，history-r17完整保留修改前版本。
 
