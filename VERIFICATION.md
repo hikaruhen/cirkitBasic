@@ -1,3 +1,11 @@
+# r21 本機驗收（2026-11-02）
+
+連續極板：兩尺寸2/3顆、直接接觸及相鄰短手動線、四方向、同向／反向／抵消。正極長70、負極短36 world，pair中心間距38 world；組內無接柱／弧橋／U線，手動資料保留。①②外端有號值依拓撲，模式parts/wires/contacts與求解值全等；雙模式140ms節點位移／相抵停、直線流路、逐顆點選調壓、旋轉undo、分支點不藏通過。已看2/3顆實際圖。group圖示拖曳四向按下不變、10px跟手與僅該顆移動、undo完整還原通過。
+
+獨立1440/844四向六組符號與操作矩陣通過；短manual保留、遠距與中點分岔不誤併；三顆第一顆拖動原165／66px跳位已修到<0.001px，undo還原parts/wires及group。初始化fonts置中競態以等初始化與scene=custom排除，未改既有啟動流程。solver/safety/flow/style/PhET與r20逐位元一致；接觸物理57項通過。history-r20保留，待正式站核對。
+
+歷史驗收如下。
+
 # r20 本機驗收（2026-11-02）
 
 contacts-physics-r20：57數值通過。同向3 V、反向+1.5／−1.5／0 V、三顆全順與混合、KCL／功率守恆、parts順序獨立、manual/contact去重不改wire、移除接觸斷路及manual獨立留存、衝突源顯式錯誤映射contact與拖開恢復。
@@ -290,3 +298,5 @@ r17額定文字補正：燈泡／保險絲／無熔絲開關90°、270°額定�
 正式r18提交b7e1fbace0dcab1ce8077574d80b0c123a0e6c98 Pages built；七個runtime SHA256與本機全符。1440桌面與844觸控正式6/9/12 V動作順序、事件前電流／當時門檻、參數修正、替換復歸與undo完整通過，無pageerror。
 
 正式r19 b4ab62605b95e3dc3cf8a8808c9a6811a8a020c5 Pages built；七runtime SHA256全符，844正式頁移除指定區塊、八tile保留。
+
+正式r20 0f5eac9ea7926fb153f6a31f7fa3e318f0a59fd5 Pages built；七runtime SHA256全符。作者正式1440/844接觸拖放與復原全過；獨立正式32組含橫向偏移8world吸附對齊、三顆／中間解除及undo通過。獨立像素general/schematic×兩模式各25相位hiddenSamples0。最終manifest／收據同步完成。
