@@ -1,3 +1,13 @@
+# r20 本機驗收（2026-11-02）
+
+contacts-physics-r20：57數值通過。同向3 V、反向+1.5／−1.5／0 V、三顆全順與混合、KCL／功率守恆、parts順序獨立、manual/contact去重不改wire、移除接觸斷路及manual獨立留存、衝突源顯式錯誤映射contact與拖開恢復。
+
+contacts-ui-r20：1440滑鼠、844 CDP觸控實際拖動四角端子吸附；只移一顆、只留原2條負載線、一個contact、雙模式同一節點220ms位移方向及0 V停。拖開零contact／零I，undo恢復；旋轉、刪除及undo；第三顆實拖4.5 V／2contact；衝突源拖開恢復；clear/preset通過。觸控測試跟隨既有邊緣自動平移重投影world落點，未改autoPan；fixture等初始化字體置中結束以免混入啟動行為。已看844雙電池與短橋畫面。
+
+獨立解析與1440/844真mouse/CDP驗收亦通過四角×四電壓極性32組、相抵停、接觸粒子實際位移、旋轉／刪除／clear及undo、三顆鏈與拖中間顆解除兩接觸再undo，無pageerror。history-r19完整保留。觸控非真機驗收；待正式7檔與關鍵操作核對。
+
+歷史驗收如下。
+
 # r19 驗收（2026-11-02）
 
 只刪元件架標題與提示；844×390確認無兩個區塊、八tile與aria-label保留、實際拖新增一次。未改CSS、JS或模型，未新增測試腳本或重跑物理矩陣。history-r18保留前版。
@@ -278,3 +288,5 @@ r17額定文字補正：燈泡／保險絲／無熔絲開關90°、270°額定�
 額定文字修正正式提交3aeb9a9e7e603b65201c2bd4ad1317280cfe1e6e Pages built；七runtime SHA256全符。正式1440與844三元件四角避線、名稱讀值分離及四邊界最大額定／狀態文字完整通過；只修改布局預留，保護／拖放邏輯未改。
 
 正式r18提交b7e1fbace0dcab1ce8077574d80b0c123a0e6c98 Pages built；七個runtime SHA256與本機全符。1440桌面與844觸控正式6/9/12 V動作順序、事件前電流／當時門檻、參數修正、替換復歸與undo完整通過，無pageerror。
+
+正式r19 b4ab62605b95e3dc3cf8a8808c9a6811a8a020c5 Pages built；七runtime SHA256全符，844正式頁移除指定區塊、八tile保留。

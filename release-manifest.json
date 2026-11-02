@@ -1,9 +1,9 @@
 {
-  "version": "local-20261102-r19-compact-shelf",
+  "version": "local-20261102-r20-battery-contact",
   "files": [
     {
       "path": "index.html",
-      "sha256": "d74892862471c3735fde3c676f961f4a5ee65b5a9b368ebd9cf8e93960c0db54"
+      "sha256": "79e7ce608a78acc5b68d8ffda0ab5de3c995ca7bca1f9f2515d3aaab9d29164b"
     },
     {
       "path": "style.css",
@@ -11,7 +11,7 @@
     },
     {
       "path": "sim.js",
-      "sha256": "6ce048cf82d8e59ce5756787faa1eb3cc4fc38aa482bc03dc77a32e1c4c68924"
+      "sha256": "e411a0b387f85a66109a4cc0c582854b54d1abe305ad533b2a04c2a9535a297f"
     },
     {
       "path": "solver.js",
@@ -23,7 +23,7 @@
     },
     {
       "path": "safety.js",
-      "sha256": "5f1de804cf4c14331521a09a406b810cb7b1362ae3129166b73b74a2c0efa4e7"
+      "sha256": "322f958aa4b541c83d4ae45cd7fd874fb2b9401329a4051bd3b21607a772b865"
     },
     {
       "path": "phet-original.html",
