@@ -3,7 +3,7 @@
   "files": [
     {
       "path": "index.html",
-      "sha256": "954b088e5a56c1c115cedc59c2917bbee85ae0c80eec4baaa70ac06df82a8518"
+      "sha256": "ed1237f9477d970da1b49171e7339e1a765747940ed113c6daee172fcffc4814"
     },
     {
       "path": "style.css",
@@ -11,7 +11,7 @@
     },
     {
       "path": "sim.js",
-      "sha256": "14e1b98b5f9d90f9e895986389c7fe6d893b6e64c81fa70f1b780562c594f144"
+      "sha256": "a93ffbdc4ee5b526e5e0b84d0b8ccea26a4b5ceeaebb8c928852130afaf5d0ff"
     },
     {
       "path": "solver.js",
