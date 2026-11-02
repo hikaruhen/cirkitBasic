@@ -1,21 +1,21 @@
 {
-  "version": "local-20261102-r17-protection-drag",
+  "version": "local-20261102-r18-current-evidence",
   "files": [
     {
       "path": "index.html",
-      "sha256": "ed1237f9477d970da1b49171e7339e1a765747940ed113c6daee172fcffc4814"
+      "sha256": "25c22f2dbb07cb32ecd096d374736548099e2fe5ad337412daabf8a5f1e4deb3"
     },
     {
       "path": "style.css",
-      "sha256": "4d137d1f7431e46c5e143635803d3137ad509c8d2fe2c18b5f3b16bf59c091c1"
+      "sha256": "ef6f6fb3d45a9be98b60a431b0fe75046d1e396a08a02917dd8147148488210e"
     },
     {
       "path": "sim.js",
-      "sha256": "a93ffbdc4ee5b526e5e0b84d0b8ccea26a4b5ceeaebb8c928852130afaf5d0ff"
+      "sha256": "6ce048cf82d8e59ce5756787faa1eb3cc4fc38aa482bc03dc77a32e1c4c68924"
     },
     {
       "path": "solver.js",
-      "sha256": "d900d2c95ea1e727ce095d555f9a80e09a3e82435d7bceec50ed2f692fddd5af"
+      "sha256": "d35191bfad20ce56b53395ef4f4a98f01e0fc103840f4698ef02cf61eb8e3d76"
     },
     {
       "path": "flow.js",
@@ -23,7 +23,7 @@
     },
     {
       "path": "safety.js",
-      "sha256": "29126abc5b9772dcbe14081257733e1893cf85628e6718f4d1e5473782c95270"
+      "sha256": "5f1de804cf4c14331521a09a406b810cb7b1362ae3129166b73b74a2c0efa4e7"
     },
     {
       "path": "phet-original.html",
