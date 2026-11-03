@@ -1,3 +1,13 @@
+# r22 本機驗收（2026-11-03）
+
+基準兩顆6 V／60 Ω舊解100與0 mA且source indeterminate。新解於原MNA nullspace加入sum(I_source²)最小的明示等極小內阻極限，電壓與唯一支流不改，兩顆各50 mA。source-sharing-r22數值379項、reasonableness179、contacts57、finiteV84與faultorder16通過。
+
+兩尺寸1440/844，2/3顆每支路A、四角×一般／符號×電子／電流，所有電池實際170ms節點位移且正反方向、A50.0／33.3mA、無負載停、switch斷一源、異壓slider報衝突與回復、反極停流通過。新提示在render原節點更新，6→6.1時無舊值、6回復且input焦點保持。已看844雙電池均有藍點畫面。
+
+獨立2/3/5/10顆／支路A／倒序KCL、無負載、1:2混合、有阻支路不強制等分、斷源、原串聯、真斷線／undo、異壓slider恢復、純A迴路仍未定與清楚粒子皆通過；即時文字及焦點補驗亦通過。history-r21保留，待正式驗證。模型假設與KTH／OpenStax來源已入說明，非實物唯一分配。
+
+歷史驗收如下。
+
 # r21 本機驗收（2026-11-02）
 
 連續極板：兩尺寸2/3顆、直接接觸及相鄰短手動線、四方向、同向／反向／抵消。正極長70、負極短36 world，pair中心間距38 world；組內無接柱／弧橋／U線，手動資料保留。①②外端有號值依拓撲，模式parts/wires/contacts與求解值全等；雙模式140ms節點位移／相抵停、直線流路、逐顆點選調壓、旋轉undo、分支點不藏通過。已看2/3顆實際圖。group圖示拖曳四向按下不變、10px跟手與僅該顆移動、undo完整還原通過。
@@ -300,3 +310,5 @@ r17額定文字補正：燈泡／保險絲／無熔絲開關90°、270°額定�
 正式r19 b4ab62605b95e3dc3cf8a8808c9a6811a8a020c5 Pages built；七runtime SHA256全符，844正式頁移除指定區塊、八tile保留。
 
 正式r20 0f5eac9ea7926fb153f6a31f7fa3e318f0a59fd5 Pages built；七runtime SHA256全符。作者正式1440/844接觸拖放與復原全過；獨立正式32組含橫向偏移8world吸附對齊、三顆／中間解除及undo通過。獨立像素general/schematic×兩模式各25相位hiddenSamples0。最終manifest／收據同步完成。
+
+正式r21 415fe5870cfe394deecca418a48baf661adebf57 Pages built。獨立正式七runtime SHA256全符；1440與844共48情況連續極板、逐顆調壓、manual／分岔排除、拖曳跟手及undo完整通過。依驗收指示僅收尾，未再擴測或修改功能。

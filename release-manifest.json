@@ -1,9 +1,9 @@
 {
-  "version": "local-20261102-r21-continuous-battery-symbol",
+  "version": "local-20261103-r22-symmetric-source-sharing",
   "files": [
     {
       "path": "index.html",
-      "sha256": "8c8be7bc77fc4a1ad67b1089b41cef905efd2568927b1fd296cc42d199cdc86a"
+      "sha256": "c43652a21bb7822ca69da159775c049ffde9079db8a94fddd05ab48e5b5baf81"
     },
     {
       "path": "style.css",
@@ -11,11 +11,11 @@
     },
     {
       "path": "sim.js",
-      "sha256": "70799777086f02644d2e67ff55e7f15db7d9fbc257d9e5b5843b64e562286ce1"
+      "sha256": "da4e1fe11616f1128eddc37c7be1bc34b75a08626025e436a1bace69ba13b89d"
     },
     {
       "path": "solver.js",
-      "sha256": "d35191bfad20ce56b53395ef4f4a98f01e0fc103840f4698ef02cf61eb8e3d76"
+      "sha256": "ed1b9b771f1971b511ac481b4352c5309f2668be76317d7d2f75da8e9019a18f"
     },
     {
       "path": "flow.js",

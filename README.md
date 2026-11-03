@@ -1,6 +1,21 @@
-# 電路遊樂場 — r21 連續電池組符號版
+# 電路遊樂場 — r22 電源對稱分流版
 
-入口：index.html。版本local-20261102-r21-continuous-battery-symbol，2026-11-02。
+入口：index.html。版本local-20261103-r22-symmetric-source-sharing，2026-11-03。
+
+r22以r21為基底，history-r21完整保留。本機與獨立並聯數值／KCL／實際動畫驗收通過。
+
+## r22 新增
+
+- 重現兩顆6 V同極並聯接60 Ω，舊理想源rank解任意選100／0 mA，造成一顆靜止。理想等壓源支流原本不唯一；本版增加明示教學約束，不把任意代表解當實物分配。
+- 保留精確理想端電壓／原MNA／KCL，在原解的nullspace中最小化各電池電流平方和，等價於每顆相同極小內阻的理想極限。兩／三顆相同直接並聯為50／50或各33.333 mA；不加入會改變6 V燈泡界線的有限內阻。串並混合依每顆權重，3+3 V一支串鏈並6 V單顆時支流1:2，不強制外接有阻支路均分。
+- 同一約束同時更新battery支流、所有相關理想A／switch電流、導線KCL與粒子。branch安培計在教學約束下有數值並標示assumedSourceSharing；尚未被電池約束消除的純零阻安培計迴路仍標未定，不假造唯一讀值。
+- result.sharedSourceCurrents與sourceSharingModel明示模型；選取電池顯示支流mA與非唯一實物值說明，選取A標示分流假設；完整理論放原理與操作。render只更新提示文字節點，不重建滑桿，衝突時清除舊值、恢復時更新且焦點不丟失。
+- 相同源無負載／開路時無持續循環；斷一顆後其餘重分流。不同壓同極或反極直接並聯仍source-conflict全場停流，不平均電壓或掩飾真實電池可能有危險均衡電流。純串聯、反串相抵、250 mA燈泡／保護、有限V等原規則維持。
+- 來源：[KTH EI1120 Topic02](https://kurs.ets.kth.se/ei1120/chptrs/ch02_simplify.pdf)說明理想並聯等壓源支流不唯一；[OpenStax10.3](https://openstax.org/books/university-physics-volume-2/pages/10-3-kirchhoffs-rules)說明KCL及含內阻並聯電池。最小平方／極小同內阻極限是本教具的明示延伸假設，不聲稱實物一定平均。
+- tests/source-sharing-r22.cjs共379數值：2/3顆、每支路A、R／非線性lamp／無負載、反向接線、斷一顆、重複線與順序不變、KCL功率、混合串並、異壓反極衝突、保留真正A未定。tests/source-sharing-ui-r22.cjs於1440及844實際兩／三顆四角×兩圖示×電子／電流全部電池節點移動、branch A數值、no-load停、真switch開路、真電壓slider衝突恢復及即時文字焦點通過。舊reasonableness中等壓源未定斷言改為明示約束下各300mA，179項通過；既有接觸57、有限V84、保護順序16項通過。
+- 獨立另通過2/3/5/10顆、branch A、順序KCL、相容混合1:2／有阻支路不均分、真斷線undo與slider恢復；純A迴路仍未定；兩電池實際藍點／箭頭皆清楚移動。觸控為瀏覽器模擬，非真機。
+
+以下為歷史記錄；舊任意理想源代表解由r22明示分流模型取代。
 
 r21只改符號圖視覺與該符號抓取映射，history-r20完整保留；求解／KCL／安全／實物圖示規則不變。
 
