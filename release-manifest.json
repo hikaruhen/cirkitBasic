@@ -1,9 +1,9 @@
 {
-  "version": "local-20261103-r23-standalone-junction",
+  "version": "local-20261103-r24-direct-junction-drag",
   "files": [
     {
       "path": "index.html",
-      "sha256": "d8817be9b316348f3bb59e367ef2a415284e9a146e870907447e8bd3b58f0f8c"
+      "sha256": "4313cac4d453286cc223ac9740ccbbfbf75c289ab037f3e31c8dafd45c6a5aa7"
     },
     {
       "path": "style.css",
@@ -11,7 +11,7 @@
     },
     {
       "path": "sim.js",
-      "sha256": "3a9979de1a94dcddb015e0cf6e56b54408b683786b733b13eff0627ec5b0ad0c"
+      "sha256": "dec64f741ab40c206bc5c897f434f6f0de4a7dc62b36415a3a9f3d5ab35c4318"
     },
     {
       "path": "solver.js",
