@@ -1,9 +1,9 @@
 {
-  "version": "local-20261103-r22-symmetric-source-sharing",
+  "version": "local-20261103-r23-standalone-junction",
   "files": [
     {
       "path": "index.html",
-      "sha256": "c43652a21bb7822ca69da159775c049ffde9079db8a94fddd05ab48e5b5baf81"
+      "sha256": "d8817be9b316348f3bb59e367ef2a415284e9a146e870907447e8bd3b58f0f8c"
     },
     {
       "path": "style.css",
@@ -11,7 +11,7 @@
     },
     {
       "path": "sim.js",
-      "sha256": "da4e1fe11616f1128eddc37c7be1bc34b75a08626025e436a1bace69ba13b89d"
+      "sha256": "3a9979de1a94dcddb015e0cf6e56b54408b683786b733b13eff0627ec5b0ad0c"
     },
     {
       "path": "solver.js",
