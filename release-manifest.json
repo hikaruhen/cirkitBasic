@@ -1,9 +1,9 @@
 {
-  "version": "local-20261103-r24-direct-junction-drag",
+  "version": "local-20261103-r25-meter-body-drag",
   "files": [
     {
       "path": "index.html",
-      "sha256": "4313cac4d453286cc223ac9740ccbbfbf75c289ab037f3e31c8dafd45c6a5aa7"
+      "sha256": "07dc58f06d7ba284c01985153acbda426ef892a258d6e2ddd177cdcb806bd2d7"
     },
     {
       "path": "style.css",
@@ -11,7 +11,7 @@
     },
     {
       "path": "sim.js",
-      "sha256": "dec64f741ab40c206bc5c897f434f6f0de4a7dc62b36415a3a9f3d5ab35c4318"
+      "sha256": "aaa0d41f1fe877c44d58fd4910256067460c6f40f93567731d4a732e4984b4f0"
     },
     {
       "path": "solver.js",
