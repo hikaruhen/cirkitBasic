@@ -1,9 +1,9 @@
 {
-  "version": "local-20261103-r25-meter-body-drag",
+  "version": "local-20261104-r26-lamp350-brightness",
   "files": [
     {
       "path": "index.html",
-      "sha256": "07dc58f06d7ba284c01985153acbda426ef892a258d6e2ddd177cdcb806bd2d7"
+      "sha256": "4d5f05216ed027373d6a9a034e6b3e2d85dd5831f0733d69edbf100652b3ea55"
     },
     {
       "path": "style.css",
@@ -11,7 +11,7 @@
     },
     {
       "path": "sim.js",
-      "sha256": "aaa0d41f1fe877c44d58fd4910256067460c6f40f93567731d4a732e4984b4f0"
+      "sha256": "ebe76b34f4b7b010776bee642e4d73169cc7f6a796ce7b2e5c150638dd3fd7e6"
     },
     {
       "path": "solver.js",
@@ -23,7 +23,7 @@
     },
     {
       "path": "safety.js",
-      "sha256": "322f958aa4b541c83d4ae45cd7fd874fb2b9401329a4051bd3b21607a772b865"
+      "sha256": "fa6120b5f140f8bbc95c6088bb70283ca269c746fbaae8d02c780016fd0fece7"
     },
     {
       "path": "phet-original.html",
