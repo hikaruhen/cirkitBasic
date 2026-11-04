@@ -1,9 +1,9 @@
 {
-  "version": "local-20261104-r26-lamp350-brightness",
+  "version": "local-20261104-r27-inline-replacement",
   "files": [
     {
       "path": "index.html",
-      "sha256": "4d5f05216ed027373d6a9a034e6b3e2d85dd5831f0733d69edbf100652b3ea55"
+      "sha256": "d796c762a56a971514aa9c8f0ca113217d561e0b47648290a6c13f4f9ae3e9b8"
     },
     {
       "path": "style.css",
@@ -11,7 +11,7 @@
     },
     {
       "path": "sim.js",
-      "sha256": "ebe76b34f4b7b010776bee642e4d73169cc7f6a796ce7b2e5c150638dd3fd7e6"
+      "sha256": "ae47411fbf974e299752b73fdd1211ef7363d94a5709de1a3c5b703bf0013f36"
     },
     {
       "path": "solver.js",
