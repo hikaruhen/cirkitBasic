@@ -1,17 +1,17 @@
 {
-  "version": "local-20261110-r30-rheostat-current4x",
+  "version": "local-20261110-r31-default100-no-potential",
   "files": [
     {
       "path": "index.html",
-      "sha256": "77c4a8192f6aaafb1151ab8e1a2e1f656eb5345ebf86b7fbade422e64449b832"
+      "sha256": "749cdfb960f8fd966fcf045914395211176a415c9b6fa36bbe6ce3d8b46cfd83"
     },
     {
       "path": "style.css",
-      "sha256": "ef6f6fb3d45a9be98b60a431b0fe75046d1e396a08a02917dd8147148488210e"
+      "sha256": "20ded7182c2425b573c088ae80fcc9ebd36cfb867ad5918b1a3f74601ca4e3ab"
     },
     {
       "path": "sim.js",
-      "sha256": "4b631e599c26059090334acab21f9f33c68cb99e68dd51d1377ec5783f5d27ee"
+      "sha256": "4724b8dee6208ebbb098fd20c361eb49ee78d9a670e819bd629bbcd5637a18f7"
     },
     {
       "path": "solver.js",
