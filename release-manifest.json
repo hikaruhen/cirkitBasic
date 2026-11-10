@@ -1,9 +1,9 @@
 {
-  "version": "local-20261110-r31-default100-no-potential",
+  "version": "local-20261110-r32-heat-safety",
   "files": [
     {
       "path": "index.html",
-      "sha256": "749cdfb960f8fd966fcf045914395211176a415c9b6fa36bbe6ce3d8b46cfd83"
+      "sha256": "9f7bf5a3b2ba72f7bd49152cfc6c135f32e518a89e4dfff2bda6b40514e64ad1"
     },
     {
       "path": "style.css",
@@ -11,7 +11,7 @@
     },
     {
       "path": "sim.js",
-      "sha256": "4724b8dee6208ebbb098fd20c361eb49ee78d9a670e819bd629bbcd5637a18f7"
+      "sha256": "ccd942c90b28d1b297a440b677125de8dd8896b664152e1ccd8eae8c70a22d40"
     },
     {
       "path": "solver.js",
@@ -28,6 +28,18 @@
     {
       "path": "phet-original.html",
       "sha256": "370b10fb6dcb06cff4cc2c453f635130912445bb5a291f2646394d7df2c110c7"
+    },
+    {
+      "path": "heat-model.js",
+      "sha256": "f01e31ff524a5af088b9dd1c491394c4b5ad9cf3917707a00a40eda0509786a8"
+    },
+    {
+      "path": "heat-ui.js",
+      "sha256": "9d6550cfc14ff50b5a2afb1cb2ecbf9b82d7c607995dc144a3256b856f606cbc"
+    },
+    {
+      "path": "heat.css",
+      "sha256": "19fb455d84ca256749278b0c83670abf80621ec9ffdec85bf30397c795db1b9a"
     }
   ]
 }
