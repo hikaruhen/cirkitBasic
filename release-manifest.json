@@ -1,9 +1,9 @@
 {
-  "version": "local-20261110-r29-sliding-rheostat",
+  "version": "local-20261110-r30-rheostat-current4x",
   "files": [
     {
       "path": "index.html",
-      "sha256": "e87be2ecb3c2105b693c88f51f3580157248fdb61bfcc9f21e519875554ab4cc"
+      "sha256": "77c4a8192f6aaafb1151ab8e1a2e1f656eb5345ebf86b7fbade422e64449b832"
     },
     {
       "path": "style.css",
@@ -11,11 +11,11 @@
     },
     {
       "path": "sim.js",
-      "sha256": "6cdda1b766462982d8915cafc1f3300945b9f311f14538df1bf2908bb9141819"
+      "sha256": "4b631e599c26059090334acab21f9f33c68cb99e68dd51d1377ec5783f5d27ee"
     },
     {
       "path": "solver.js",
-      "sha256": "36eb4b7ec4076d69bc08e55fda858d251cc9b6471d389934815754a7f718b67b"
+      "sha256": "0f11480a1ae974115454692cd631300f597ce49df69da4bde8808d62be40abe1"
     },
     {
       "path": "flow.js",
@@ -23,7 +23,7 @@
     },
     {
       "path": "safety.js",
-      "sha256": "e2c9946063bde72969b13719ff45225f321235a7140e55c59feaeed5eca06595"
+      "sha256": "c17643e8b0ac3c487d8e3b4b8753c7f94df579ee5665745923db8b27e25b2fc1"
     },
     {
       "path": "phet-original.html",
