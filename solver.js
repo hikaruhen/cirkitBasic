@@ -27,7 +27,17 @@ function rankSolve(matrix,sourceIndices=[]){
  if(sourceIndices.some(i=>uncertain.has(i))){const normal=basis.map((v,j)=>[...basis.map(u=>sourceIndices.reduce((sum,i)=>sum+v[i]*u[i],0)),-sourceIndices.reduce((sum,i)=>sum+v[i]*x[i],0)]),choice=rankSolve(normal);if(!choice)return null;const next=x.map((v,i)=>v+basis.reduce((sum,b,j)=>sum+b[i]*choice.x[j],0)),remaining=choice.nullspace.map(v=>x.map((_,i)=>basis.reduce((sum,b,j)=>sum+b[i]*v[j],0))),residual=new Set();for(let i=0;i<n;i++)if(remaining.some(v=>Math.abs(v[i])>1e-8))residual.add(i);return {x:next,uncertain:residual,nullspace:remaining,originalUncertain};}
  return {x,uncertain,nullspace:basis,originalUncertain};
 }
+// Four physical posts: a/b winding ends; c/d the same ideal metal rail/wiper.
+// Expand to two independent winding segments plus an ideal c-d rail, retaining four terminal injections.
+function solveRheostats(parts,wires){const rs=parts.filter(p=>p.type==='rheostat'),expanded=parts.filter(p=>p.type!=='rheostat'),extra=[],mapping={},owners={};
+ for(const p of rs){if(!Number.isFinite(p.value)||p.value<=0||p.value>1000||!Number.isFinite(p.position)||p.position<0||p.position>1)return{error:'滑動變阻器總電阻／滑片位置無效',code:'invalid',affected:[p.id],currents:{},voltages:{},meters:{},diagnostics:[]};const a=p.id+'~aw',b=p.id+'~wb',c=p.id+'~cd';for(const id of[a,b,c])owners[id]=p.id;const segment=(id,r)=>expanded.push({id,type:r===0||p.damage?'switch':'resistor',value:r,closed:!p.damage});segment(a,p.value*p.position);segment(b,p.value*(1-p.position));expanded.push({id:c,type:'switch',closed:true});mapping[p.id]={a:a+':p',b:b+':n',c:a+':n',d:c+':n'};extra.push({a:a+':n',b:b+':p',owner:p.id},{a:a+':n',b:c+':p',owner:p.id});}
+ const map=t=>{const[id,end]=t.split(':');return mapping[id]?.[end]||t},all=[...wires.map(w=>({...w,a:map(w.a),b:map(w.b)})),...extra],r=solveCircuit(expanded,all),remap=key=>owners[key]||(/^w\d+$/.test(key)&&Number(key.slice(1))>=wires.length?extra[Number(key.slice(1))-wires.length]?.owner||key:key);
+ r.affected=[...new Set((r.affected||[]).map(remap))];for(const d of r.diagnostics||[]){d.parts=[...new Set((d.parts||[]).map(remap))];if(d.paths)d.paths=[...new Set(d.paths.map(remap))]}r.rheostats={};if(r.error)return r;
+ for(const p of rs){const a=p.id+'~aw',b=p.id+'~wb',c=p.id+'~cd',ia=r.currents[a]||0,ib=r.currents[b]||0,icd=r.currents[c]||0,ra=p.value*p.position,rb=p.value*(1-p.position),va=r.voltages[a],vb=r.voltages[b];r.rheostats[p.id]={RA:ra,RB:rb,leftCurrent:ia,rightCurrent:ib,railCurrent:icd,terminalCurrents:{a:ia,b:-ib,c:ib-ia+icd,d:-icd},power:ia*ia*ra+ib*ib*rb,currentLimit:Math.sqrt((p.ratedPower??5)/p.value)};r.currents[p.id]=Math.max(Math.abs(ia),Math.abs(ib));r.voltages[p.id]=va==null||vb==null?null:va+vb;for(const id of[a,b,c]){delete r.currents[id];delete r.voltages[id]}if(r.indeterminateCurrents)r.indeterminateCurrents=[...new Set(r.indeterminateCurrents.map(remap))];}
+ return r;
+}
 function solveCircuit(parts,inputWires){
+ if(parts.some(p=>p.type==='rheostat'))return solveRheostats(parts,inputWires);
  const fail=(code,error,affected=[])=>({error,code,affected,protection:'global',summary:'全場保護暫停：'+error,meters:{},currents:{},voltages:{},warnings:[],diagnostics:[],indeterminateCurrents:[]});
  if(new Set(parts.map(p=>p.id)).size!==parts.length)return fail('invalid','元件識別重複');
  const parent={},find=x=>{if(!(x in parent))parent[x]=x;return parent[x]===x?x:parent[x]=find(parent[x])},join=(a,b)=>parent[find(a)]=find(b),used={},ranges={};

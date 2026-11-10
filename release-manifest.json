@@ -1,9 +1,9 @@
 {
-  "version": "local-20261110-r28-led-wheel",
+  "version": "local-20261110-r29-sliding-rheostat",
   "files": [
     {
       "path": "index.html",
-      "sha256": "17e11f5f3771bba4d741f6f24f33d488ed4add0e7ca502294ff93d64b637e60e"
+      "sha256": "e87be2ecb3c2105b693c88f51f3580157248fdb61bfcc9f21e519875554ab4cc"
     },
     {
       "path": "style.css",
@@ -11,19 +11,19 @@
     },
     {
       "path": "sim.js",
-      "sha256": "7ef86d5f66f017e5a9816916487e78a5dd941aea2e59e110e5ab54f8fa989654"
+      "sha256": "6cdda1b766462982d8915cafc1f3300945b9f311f14538df1bf2908bb9141819"
     },
     {
       "path": "solver.js",
-      "sha256": "ccbe61c124e5a1f30843ff1a7d97f6d2e70f74bfdd920114eb89c2b1bbf93934"
+      "sha256": "36eb4b7ec4076d69bc08e55fda858d251cc9b6471d389934815754a7f718b67b"
     },
     {
       "path": "flow.js",
-      "sha256": "404ae86b7d9f2eec0adcaed11d0762bd067048eeb17c9ffe19178c0b9033b89c"
+      "sha256": "87613d9000c473fe4ce2e3ded8aa014179f04de6e56440f3f2f993ff8319a1a1"
     },
     {
       "path": "safety.js",
-      "sha256": "d31e2bb9785b38111108e30fa53bf8e491155b78f8d5961149ec818fe2fad870"
+      "sha256": "e2c9946063bde72969b13719ff45225f321235a7140e55c59feaeed5eca06595"
     },
     {
       "path": "phet-original.html",
