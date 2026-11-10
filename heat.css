@@ -2,3 +2,7 @@ body{margin:0}.module-tabs{height:46px;display:flex;gap:6px;align-items:center;p
 @media(max-width:650px) and (orientation:portrait){.heat-header{height:auto;min-height:78px;flex-wrap:wrap;gap:3px}.heat-header h1{width:100%;font-size:14px}.heat-header>div{width:100%;justify-content:space-between;gap:3px}.heat-header button{font-size:11px;padding:4px;min-height:36px}}
 
 .heat-work{display:flex;flex-direction:column}.heat-viewport{height:auto;flex:1;min-height:0}.heat-hud{flex-shrink:0;display:flex;flex-wrap:wrap;justify-content:space-between;gap:4px 14px;padding:8px 12px;background:#f8f8eaeF;border-bottom:1px solid #d7decb;font-size:14px;line-height:1.5}.heat-hud span{color:#526b60}.heat-notice{position:static;flex-shrink:0;margin:4px 8px;max-width:none;left:auto;right:auto;bottom:auto;font-size:12px}@media(max-height:500px){.heat-hud{font-size:12px;padding:4px 8px}.heat-notice{font-size:10px;padding:3px 6px;margin:2px 5px}}
+
+.heat-notice{align-self:flex-start;padding:4px 9px;margin:4px 8px;font-size:12px;border-color:#d6d6ba;background:#f8f8e6}.heat-notice span::before{content:"";display:inline-block;width:23px;height:2px;margin:0 7px 3px 0;background:#eac744}.heat-bill-values{font-size:13px;margin:4px 0}.heat-bill-title{font-size:14px}
+
+.heat-bill-card input[data-hours]{min-height:44px;font-size:16px;box-sizing:border-box}.heat-hud.heat-bill-total{font-size:22px;font-weight:700}
