@@ -1,9 +1,9 @@
 {
-  "version": "local-20261104-r27-inline-replacement",
+  "version": "local-20261110-r28-led-wheel",
   "files": [
     {
       "path": "index.html",
-      "sha256": "d796c762a56a971514aa9c8f0ca113217d561e0b47648290a6c13f4f9ae3e9b8"
+      "sha256": "17e11f5f3771bba4d741f6f24f33d488ed4add0e7ca502294ff93d64b637e60e"
     },
     {
       "path": "style.css",
@@ -11,11 +11,11 @@
     },
     {
       "path": "sim.js",
-      "sha256": "ae47411fbf974e299752b73fdd1211ef7363d94a5709de1a3c5b703bf0013f36"
+      "sha256": "7ef86d5f66f017e5a9816916487e78a5dd941aea2e59e110e5ab54f8fa989654"
     },
     {
       "path": "solver.js",
-      "sha256": "ed1b9b771f1971b511ac481b4352c5309f2668be76317d7d2f75da8e9019a18f"
+      "sha256": "ccbe61c124e5a1f30843ff1a7d97f6d2e70f74bfdd920114eb89c2b1bbf93934"
     },
     {
       "path": "flow.js",
@@ -23,7 +23,7 @@
     },
     {
       "path": "safety.js",
-      "sha256": "fa6120b5f140f8bbc95c6088bb70283ca269c746fbaae8d02c780016fd0fece7"
+      "sha256": "d31e2bb9785b38111108e30fa53bf8e491155b78f8d5961149ec818fe2fad870"
     },
     {
       "path": "phet-original.html",

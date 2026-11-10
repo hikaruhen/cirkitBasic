@@ -5,6 +5,10 @@ const voltmeterResistance=range=>1000*range;
 const lampCoefficient=.25*Math.sqrt(7)/6,protectionResistance=.01;
 const lampCurrent=v=>lampCoefficient*v/Math.sqrt(1+Math.abs(v));
 const lampSlope=v=>lampCoefficient*(1+Math.abs(v)/2)/Math.pow(1+Math.abs(v),1.5);
+// Red LED teaching fit: 1.9 V at 10 mA, ~2.045 V at 20 mA. C1 piecewise nonlinear curve,
+// not a fixed resistance; finite reverse leakage. Beyond ratings is damage territory, not a calibrated IV prediction.
+const ledCurrent=v=>1e-7*v+(v>1.55?(v-1.55)**2*(.01/.35**2):0);
+const ledSlope=v=>1e-7+(v>1.55?2*(v-1.55)*(.01/.35**2):0);
 const norm=t=>{const [id,end]=t.split(':');return id+':'+(end.startsWith('p')?'p':end)};
 // Rank-revealing elimination: free ideal branch currents are allowed, never
 // silently returned as a measured current. A representative solution drives animation.
@@ -27,7 +31,7 @@ function solveCircuit(parts,inputWires){
  const fail=(code,error,affected=[])=>({error,code,affected,protection:'global',summary:'全場保護暫停：'+error,meters:{},currents:{},voltages:{},warnings:[],diagnostics:[],indeterminateCurrents:[]});
  if(new Set(parts.map(p=>p.id)).size!==parts.length)return fail('invalid','元件識別重複');
  const parent={},find=x=>{if(!(x in parent))parent[x]=x;return parent[x]===x?x:parent[x]=find(parent[x])},join=(a,b)=>parent[find(a)]=find(b),used={},ranges={};
- for(const p of parts){if(!['battery','resistor','lamp','switch','ammeter','voltmeter','junction','fuse','breaker'].includes(p.type))return fail('invalid','未知元件',[p.id]);if(['resistor','battery'].includes(p.type)&&(!Number.isFinite(p.value)||p.value<=0||p.value>1000))return fail('invalid','電源與電阻需為有效正值',[p.id]);if(['fuse','breaker'].includes(p.type)&&(!Number.isFinite(p.ratedCurrent)||p.ratedCurrent<.05||p.ratedCurrent>2))return fail('invalid','保護額定電流需為50至2000 mA',[p.id]);find(p.id+':p');find(p.id+':n');
+ for(const p of parts){if(!['battery','resistor','lamp','led','switch','ammeter','voltmeter','junction','fuse','breaker'].includes(p.type))return fail('invalid','未知元件',[p.id]);if(['resistor','battery'].includes(p.type)&&(!Number.isFinite(p.value)||p.value<=0||p.value>1000))return fail('invalid','電源與電阻需為有效正值',[p.id]);if(['fuse','breaker'].includes(p.type)&&(!Number.isFinite(p.ratedCurrent)||p.ratedCurrent<.05||p.ratedCurrent>2))return fail('invalid','保護額定電流需為50至2000 mA',[p.id]);find(p.id+':p');find(p.id+':n');
  if(['ammeter','voltmeter'].includes(p.type)){const ports=[...new Set(inputWires.flatMap(w=>[w.a,w.b]).filter(t=>t.startsWith(p.id+':p')))];if(ports.length>1)return fail('multi-range','同一儀表接了多個紅端，請只留一個量程端',[p.id]);const port=ports[0]?.split(':')[1];ranges[p.id]=port&&port!=='p'?Number(port.slice(1))/(p.type==='ammeter'?1000:1):p.range;if(!Number.isFinite(ranges[p.id])||ranges[p.id]<=0)return fail('invalid','儀表量程需為有效正值',[p.id]);used[p.id]=port||'p';}}
  const wires=inputWires.map(w=>({a:norm(w.a),b:norm(w.b)})),idealGraph={};
  const edge=(a,b,delta,key)=>{(idealGraph[a]??=[]).push({to:b,delta,key});(idealGraph[b]??=[]).push({to:a,delta:-delta,key})};
@@ -45,12 +49,12 @@ function solveCircuit(parts,inputWires){
  let x=Array(N).fill(0),uncertain=new Set(),originalUncertain=new Set(),converged=false;const sourceIndices=ideal.flatMap((p,i)=>p.type==='battery'?[unknown.length+i]:[]);
  for(let iteration=0;iteration<100;iteration++){
  const A=Array.from({length:N},()=>Array(N+1).fill(0)),add=(a,b,v)=>{if(a!==undefined&&b!==undefined)A[a][b]+=v},rhs=(a,v)=>{if(a!==undefined)A[a][N]+=v};
- for(const p of active){const a=idx[find(p.id+':p')],b=idx[find(p.id+':n')];if(['resistor','lamp','voltmeter','fuse','breaker'].includes(p.type)){const v=at(x,p.id+':p')-at(x,p.id+':n'),g=p.type==='lamp'?lampSlope(v):1/(p.type==='voltmeter'?voltmeterResistance(ranges[p.id]):['fuse','breaker'].includes(p.type)?protectionResistance:p.value),j=p.type==='lamp'?lampCurrent(v)-g*v:0;add(a,a,g);add(b,b,g);add(a,b,-g);add(b,a,-g);rhs(a,-j);rhs(b,j)}}
+ for(const p of active){const a=idx[find(p.id+':p')],b=idx[find(p.id+':n')];if(['resistor','lamp','led','voltmeter','fuse','breaker'].includes(p.type)){const v=at(x,p.id+':p')-at(x,p.id+':n'),g=p.type==='led'?ledSlope(v):p.type==='lamp'?lampSlope(v):1/(p.type==='voltmeter'?voltmeterResistance(ranges[p.id]):['fuse','breaker'].includes(p.type)?protectionResistance:p.value),j=p.type==='led'?ledCurrent(v)-g*v:p.type==='lamp'?lampCurrent(v)-g*v:0;add(a,a,g);add(b,b,g);add(a,b,-g);add(b,a,-g);rhs(a,-j);rhs(b,j)}}
  ideal.forEach((p,i)=>{const k=unknown.length+i,a=idx[find(p.id+':p')],b=idx[find(p.id+':n')];add(a,k,1);add(b,k,-1);add(k,a,1);add(k,b,-1);A[k][N]=p.type==='battery'?p.value:0});
  const linear=rankSolve(A,sourceIndices);if(!linear)return fail('inconsistent','電路限制互相衝突，請檢查電源接法。',ideal.map(p=>p.id));const next=linear.x;if(next.some(v=>!Number.isFinite(v)))return fail('numeric','無法取得有限讀值，請檢查接線。');const change=next.reduce((d,v,i)=>Math.max(d,Math.abs(v-x[i])),0);x=next;uncertain=linear.uncertain;originalUncertain=linear.originalUncertain;if(change<1e-9){converged=true;break}}
  if(!converged)return fail('convergence','非線性求解尚未收斂，請簡化接線。');
  const meters={},currents={},voltages={},warnings=[],diagnostics=[],indeterminateCurrents=[],sharedSourceCurrents=[];
- for(const p of parts){const same=groups[find(p.id+':p')]===groups[find(p.id+':n')],v=same?at(x,p.id+':p')-at(x,p.id+':n'):null,i=ideal.indexOf(p),ambiguous=i>=0&&uncertain.has(unknown.length+i);voltages[p.id]=v;currents[p.id]=i>=0?x[unknown.length+i]:p.type==='resistor'?v/p.value:p.type==='voltmeter'?v/voltmeterResistance(ranges[p.id]):['fuse','breaker'].includes(p.type)&&p.closed&&!p.tripped&&!p.damage?v/protectionResistance:p.type==='lamp'?lampCurrent(v):0;if(ambiguous)indeterminateCurrents.push(p.id);if(p.type==='battery'&&i>=0&&originalUncertain.has(unknown.length+i))sharedSourceCurrents.push(p.id);
+ for(const p of parts){const same=groups[find(p.id+':p')]===groups[find(p.id+':n')],v=same?at(x,p.id+':p')-at(x,p.id+':n'):null,i=ideal.indexOf(p),ambiguous=i>=0&&uncertain.has(unknown.length+i);voltages[p.id]=v;currents[p.id]=i>=0?x[unknown.length+i]:p.type==='resistor'?v/p.value:p.type==='voltmeter'?v/voltmeterResistance(ranges[p.id]):['fuse','breaker'].includes(p.type)&&p.closed&&!p.tripped&&!p.damage?v/protectionResistance:p.type==='led'?ledCurrent(v):p.type==='lamp'?lampCurrent(v):0;if(ambiguous)indeterminateCurrents.push(p.id);if(p.type==='battery'&&i>=0&&originalUncertain.has(unknown.length+i))sharedSourceCurrents.push(p.id);
  if(p.type==='ammeter'||p.type==='voltmeter')meters[p.id]={value:p.type==='ammeter'?(ambiguous?null:currents[p.id]):v,floating:!same,indeterminate:p.type==='ammeter'&&ambiguous,range:ranges[p.id],port:used[p.id],assumedSourceSharing:p.type==='ammeter'&&i>=0&&originalUncertain.has(unknown.length+i)&&!ambiguous,...(p.type==='voltmeter'?{inputResistance:voltmeterResistance(ranges[p.id]),branchI:currents[p.id]}:{})};
  if(['lamp','resistor'].includes(p.type)&&Math.abs(v??1)<1e-8){const path=route(p.id+':p',p.id+':n');if(path&&path.keys.length&&!path.keys.some(key=>parts.some(q=>q.id===key&&q.type==='battery')))diagnostics.push({code:'bypassed',parts:[p.id],paths:path.keys,label:(p.label|| (p.type==='lamp'?'燈泡':'電阻'))+'被旁路'})}}
  if(sharedSourceCurrents.length)diagnostics.push({code:'source-sharing',parts:sharedSourceCurrents,paths:[],label:'相容電源採同電池極小內阻的理想極限分流示意。'});
@@ -59,5 +63,5 @@ function solveCircuit(parts,inputWires){
  if(parts.some(p=>p.type==='switch'&&!p.closed))warnings.push('有開關斷開，該支路可能不導通。');
  return {meters,currents,voltages,warnings,diagnostics,indeterminateCurrents,sharedSourceCurrents,sourceSharingModel:sharedSourceCurrents.length?'equal-cell-zero-resistance-limit':null,error:null,affected:[]};
 }
-const api={solveCircuit,lampCurrent,voltmeterResistance,protectionResistance};if(typeof module!=='undefined')module.exports=api;else Object.assign(root,api);
+const api={solveCircuit,lampCurrent,ledCurrent,ledSlope,voltmeterResistance,protectionResistance};if(typeof module!=='undefined')module.exports=api;else Object.assign(root,api);
 })(typeof window==='undefined'?globalThis:window);

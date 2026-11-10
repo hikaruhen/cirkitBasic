@@ -22,9 +22,10 @@ function faultCandidates(parts,wires,result){const list=[];
  if(p.type==='voltmeter'&&meter?.value!=null&&Math.abs(meter.value)>meter.range+1e-8)list.push({kind:'part',id:p.id,code:'voltmeter-overvoltage',reason:`超量程電壓：${Math.abs(meter.value).toFixed(1)} V > ${meter.range} V（教學簡化損壞）`,actual:Math.abs(meter.value),limit:meter.range,delay:.9});
  if(['fuse','breaker'].includes(p.type)&&p.closed&&Number.isFinite(i)&&Math.abs(i)>p.ratedCurrent+1e-8){const ratio=Math.abs(i)/p.ratedCurrent;list.push({kind:'part',id:p.id,code:p.type==='fuse'?'fuse-overcurrent':'breaker-trip',reason:(p.type==='fuse'?'保險絲過流，將熔斷':'無熔絲開關過流，將跳脫')+'（教學簡化延時）',actual:Math.abs(i),limit:p.ratedCurrent,delay:Math.max(.12,.45/(ratio*ratio))})}
  if(p.type==='lamp'&&Number.isFinite(i)&&Math.abs(i)>.35+1e-8)list.push({kind:'part',id:p.id,code:'lamp-overcurrent',reason:'燈泡超過耐電流350 mA（教學額定6 V／1.5 W）',actual:Math.abs(i),limit:.35,delay:.9});
+ if(p.type==='led'&&Number.isFinite(i)&&Number.isFinite(v)){if(v< -5-1e-8)list.push({kind:'part',id:p.id,code:'led-reverse',reason:'紅LED反向電壓超過5 V（教學簡化損壞）',actual:Math.abs(v),limit:5,delay:.25});else if(i>.03+1e-8)list.push({kind:'part',id:p.id,code:'led-overcurrent',reason:'紅LED超過耐電流30 mA；請串聯限流電阻（教學簡化損壞）',actual:i,limit:.03,delay:.25});}
  if(p.type==='resistor'&&Number.isFinite(v)&&Number.isFinite(i)){const power=Math.abs(v*i),limit=p.ratedPower??5;if(power>limit+1e-8)list.push({kind:'part',id:p.id,code:'power-overload',reason:`功率過載：${power.toFixed(2)} W > ${limit} W（教學上限）`,actual:power,limit,delay:.9});}}
  return list;
 }
-function damagedLabel(p){return p.type==='fuse'?'保險絲已熔斷':p.type==='ammeter'?'安培計已燒毀':p.type==='voltmeter'?'伏特計已報廢':p.type==='lamp'?'燈泡已燒毀':'電阻已燒毀'}
+function damagedLabel(p){return p.type==='fuse'?'保險絲已熔斷':p.type==='ammeter'?'安培計已燒毀':p.type==='voltmeter'?'伏特計已報廢':p.type==='led'?'紅LED已燒毀':p.type==='lamp'?'燈泡已燒毀':'電阻已燒毀'}
 const api={fourBands,workingCircuit,workingFlows,workingFlowState,faultCandidates,damagedLabel};if(typeof module!=='undefined')module.exports=api;else Object.assign(root,api);
 })(typeof window==='undefined'?globalThis:window);
